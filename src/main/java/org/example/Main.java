@@ -1,17 +1,28 @@
 package org.example;
 
+import game.Duel;
+import game.Gesture;
+import game.Player;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Player one = new Player();
+        Player two = new Player();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Duel duel = new Duel(one, two);
+
+        one.makeGesture(Gesture.SCISSORS);
+        two.makeGesture(Gesture.PAPER);
+
+        Duel.Result result = duel.evaluate();
+
+        if(result != null) {
+            System.out.println("Winner: " + result.winner());
+            System.out.println("Loser: " + result.loser());
+        } else {
+            System.out.println("Draw!");
         }
     }
 }
