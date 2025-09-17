@@ -18,15 +18,11 @@ public enum Gesture {
         if (this == other) {
             return 0;
         }
-        switch (this) {
-            case ROCK:
-                return (other == SCISSORS) ? 1 : -1;
-            case PAPER:
-                return (other == ROCK) ? 1 : -1;
-            case SCISSORS:
-                return (other == PAPER) ? 1 : -1;
-        }
-        return 0; // technicznie nieosiągalne
+        return switch (this) {
+            case ROCK -> (other == SCISSORS) ? 1 : -1;
+            case PAPER -> (other == ROCK) ? 1 : -1;
+            case SCISSORS -> (other == PAPER) ? 1 : -1;
+        };
     }
 
 }
