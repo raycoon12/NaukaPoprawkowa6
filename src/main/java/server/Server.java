@@ -1,8 +1,6 @@
 package server;
 
 import game.Duel;
-import game.Gesture;
-import server.ClientHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

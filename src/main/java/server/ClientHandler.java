@@ -12,7 +12,6 @@ public class ClientHandler extends Player implements Runnable {
     private final Socket socket;
     private final Server server;
     private PrintWriter out;
-    private BufferedReader in;
     private String login;  // login zalogowanego klienta
 
 
@@ -29,7 +28,7 @@ public class ClientHandler extends Player implements Runnable {
     @Override
     public void run() {
         try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
             // krok 1: zapytanie o login
@@ -80,10 +79,6 @@ public class ClientHandler extends Player implements Runnable {
             } catch (IOException ignored) {}
             server.removeClient(this);
         }
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     // metoda wysyłania wiadomości do tego klienta
